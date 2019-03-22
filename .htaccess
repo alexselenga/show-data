@@ -1,0 +1,25 @@
+Options +FollowSymLinks
+#DocumentRoot c:/Local/basic/www/
+DirectoryIndex /web/index.php
+RewriteEngine on
+
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^([a-zA-Z0-9_]+)$ /$1/ [L,R=301]
+
+
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# otherwise forward it to index.php
+RewriteRule . /
+
+AddDefaultCharset UTF-8
+php_value upload_max_filesize 250M
+php_value post_max_size 250M
+
+#<IfModule dir_module>
+    #DirectoryIndex index.php
+#</IfModule>

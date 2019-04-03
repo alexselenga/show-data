@@ -4,7 +4,7 @@ namespace app\components;
 
 class Formatter extends \yii\i18n\Formatter
 {
-    public $nullDisplay = '[нет данных]';
+    public $nullDisplay = '<div style="color:red">[нет данных]</div>';
     public $phoneFormat = '/([0-9]{1})([0-9]{3})([0-9]{3})([0-9]{2})([0-9]{2})/';
     public $phoneMask = '$1 ($2) $3-$4-$5';
 

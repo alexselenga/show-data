@@ -7,6 +7,14 @@ $config = [
     'language' => 'ru',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'container' => [
+        'singletons' => [
+            'GridView' => [
+                'class' => 'yii\grid\GridView',
+                'formatter' => 'app\components\Formatter',
+            ],
+        ],
+    ],
     'components' => [
         'formatter' => [
             'class' => '\app\components\Formatter',

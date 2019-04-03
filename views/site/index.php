@@ -38,3 +38,23 @@ echo '<br>';
 echo TestHelper::truncateString("Lorem\n ipsum   dolor  \v sit amet, consectetur adipiscing elit,"
     .' sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     .' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
+
+echo GridView::widget([
+    'dataProvider' => $dataProvider,
+    'filterModel' => $searchModel,
+    'columns' => [
+        'id',
+        [
+            'attribute' => 'category',
+            'filter' => $categories,
+        ],
+        'price',
+        [
+            'attribute' => 'hidden',
+            'value' => function ($data) {
+                return $data['hidden'] ? 'Скрыто' : 'Открыто';
+            },
+            'filter' => ['0' => 'Открыто', '1' => 'Скрыто'],
+        ],
+    ],
+]);
